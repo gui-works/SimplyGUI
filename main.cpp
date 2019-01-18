@@ -31,7 +31,12 @@ int main() {
 		glfwPollEvents();
 
 		//Render
+		SimplyGUI::NewFrame();
 
+		SimplyGUI::Element();
+		//All for element goes in between here
+
+		SimplyGUI::StopElement();
 
 		//Clear and swap buffers
 		glClearColor(0.f,0.f,0.f,0.f);

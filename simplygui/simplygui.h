@@ -20,6 +20,7 @@
 // Define error messages
 #define SIMPLYGUI_NO_ERROR "SimplyGUI: No Error"
 #define SIMPLYGUI_INSTANCE_ALREADY_EXISTS "SimplyGUI: Instance already exists"
+#define SIMPLYGUI_NO_CURRENT_ELEMENT "SimplyGUI: No active element"
 
 /**
 * SimplyGUI class contains the main functionality for the SimplyGUI library.
@@ -68,6 +69,40 @@ public:
 	* @return void
 	*/
 	static void NewFrame();
+
+	/**
+	* Creates a new SimplyElement instance, and sets active element pointer to it. 
+	* all calls after this method until StopElement(). Will effect the SimplyElement just created
+	* @return void
+	*/
+	static void Element();
+
+	/**
+	* Sets the color of the currently processed element
+	* @param color A SimplyVec4f containing color values
+	* @return void
+	*/
+	static void SetColor4f(SimplyVec4f color);
+
+	/**
+	* Sets the position of the currently processed element
+	* @param position A SimplyVec2f containing position values
+	* @return void
+	*/
+	static void SetPosition2f(SimplyVec2f position);
+
+	/**
+	* Sets the scale of the currently processed element
+	* @param scale A SimplyVec2f containing scale values
+	* @return void
+	*/
+	static void SetScale2f(SimplyVec2f scale);
+
+	/**
+	* Stops the focus on the currentElement(), if currentElement == nullptr error code will be set.
+	* @return void
+	*/
+	static void StopElement();
 };
 
 #endif // !SIMPLYGUI_H

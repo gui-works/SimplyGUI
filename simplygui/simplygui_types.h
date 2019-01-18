@@ -515,6 +515,13 @@ private:
 	SimplyElement* parent; /**< The parent element, if nullptr Element has no parent */
 public:
 	/**
+	* Constructor, Initializes variables
+	*/
+	SimplyElement() {
+		this->parent = nullptr; // Set parent to nullptr
+	}
+
+	/**
 	* Sets the position vector of this SimplyElement instance
 	* @param position The position vector.
 	* @return void
