@@ -37,3 +37,15 @@ void SimplyGUI::Initialize(GLFWwindow* window) {
 const char* SimplyGUI::ReadError() {
 	return instance->error; // Return error string
 }
+
+void SimplyGUI::NewFrame() {
+	instance->currentElement = nullptr; // Set current element to nullptr
+
+	for (size_t i = 0; i < instance->windowElements.size(); i++) {
+		instance->windowElements[i]->OnNewFrame(); // Call OnNewFrame method on windowElements
+		delete instance->windowElements[i];
+
+		//Delete pointer
+		instance->windowElements.erase(instance->windowElements.begin() + i);
+	}
+}

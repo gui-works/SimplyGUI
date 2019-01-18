@@ -14,6 +14,9 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
+//Include SimplyGui_Types
+#include "simpygui_types.h"
+
 // Define error messages
 #define SIMPLYGUI_NO_ERROR "SimplyGUI: No Error"
 #define SIMPLYGUI_INSTANCE_ALREADY_EXISTS "SimplyGUI: Instance already exists"
@@ -31,6 +34,10 @@ private:
 	//Other variables
 	const char* error; /**< const char pointer holding current error message, At beginnning of every frame error will be reset to SIMPLYGUI_NO_ERROR*/
 	GLFWwindow* windowContext; /**< the window context used by the user.*/
+
+	//We hold the currently processed element adress in currentElement.
+	SimplyElement* currentElement; /**< the currently processed entity pointer*/
+	std::vector<SimplyElement*> windowElements; /**< all elements that are not children of any other entity*/
 
 	/**
 	* Private Constructor, initializes variables
@@ -55,6 +62,12 @@ public:
 	* @return const char*
 	*/
 	static const char* ReadError();
+
+	/**
+	* When called all SimplyGUI elements will be deleted and currentElement will be reset to nullptr
+	* @return void
+	*/
+	static void NewFrame();
 };
 
 #endif // !SIMPLYGUI_H
