@@ -15,7 +15,7 @@
 #include <GLFW/glfw3.h>
 
 //Include SimplyGui_Types
-#include "simpygui_types.h"
+#include "simplygui_types.h"
 
 // Define error messages
 #define SIMPLYGUI_NO_ERROR "SimplyGUI: No Error"
