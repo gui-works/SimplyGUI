@@ -31,6 +31,10 @@ void SimplyGUI::Initialize(GLFWwindow* window) {
 	//If instance does not exist we can continue
 	instance = new SimplyGUI(); // Create new instance
 	instance->windowContext = window; // Set the window context used.
+
+	//Create renderer instance
+	instance->renderer = new SimplyGUI_Renderer;
+	instance->renderer->Initialize();
 }
 
 //Returns the current value of the error variable
@@ -90,4 +94,10 @@ void SimplyGUI::StopElement() {
 		instance->currentElement = nullptr;
 	else
 		instance->SetError(SIMPLYGUI_NO_CURRENT_ELEMENT);
+}
+
+void SimplyGUI::Render() {
+	for (int i = 0; i < instance->windowElements.size(); i++) {
+		instance->renderer->RenderElement(instance->windowElements[i]);
+	}
 }

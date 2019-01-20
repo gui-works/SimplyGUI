@@ -17,6 +17,9 @@
 //Include SimplyGui_Types
 #include "simplygui_types.h"
 
+//Include SimplyGUI_renderer
+#include "simplygui_renderer.h"
+
 // Define error messages
 #define SIMPLYGUI_NO_ERROR "SimplyGUI: No Error"
 #define SIMPLYGUI_INSTANCE_ALREADY_EXISTS "SimplyGUI: Instance already exists"
@@ -31,6 +34,9 @@ class SimplyGUI {
 private:
 	//Static variables
 	static SimplyGUI* instance; /**< static singleton instance */
+
+	//Renderer instance
+	SimplyGUI_Renderer* renderer; /**< renderer instance*/
 
 	//Other variables
 	const char* error; /**< const char pointer holding current error message, At beginnning of every frame error will be reset to SIMPLYGUI_NO_ERROR*/
@@ -103,6 +109,12 @@ public:
 	* @return void
 	*/
 	static void StopElement();
+
+	/**
+	* Render all the currently created elements
+	* @return void
+	*/
+	static void Render();
 };
 
 #endif // !SIMPLYGUI_H

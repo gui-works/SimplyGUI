@@ -25,22 +25,25 @@ int main() {
 
 	//Initialze SimplyGUI
 	SimplyGUI::Initialize(window);
-
+	glClearColor(0.f, 0.f, 0.f, 0.f);
 	while (!glfwWindowShouldClose(window)) {
-		//Poll glfw events
-		glfwPollEvents();
-
 		//Render
 		SimplyGUI::NewFrame();
 
 		SimplyGUI::Element();
 		//All for element goes in between here
+		SimplyGUI::SetColor4f(SimplyVec4f(0,1,0,1));
 
 		SimplyGUI::StopElement();
 
+		SimplyGUI::Render();
+
 		//Clear and swap buffers
-		glClearColor(0.f,0.f,0.f,0.f);
-		glClear(GL_COLOR_BUFFER_BIT);
 		glfwSwapBuffers(window);
+
+		//Poll glfw events
+		glfwPollEvents();
+
+		glClear(GL_COLOR_BUFFER_BIT);
 	}
 }
